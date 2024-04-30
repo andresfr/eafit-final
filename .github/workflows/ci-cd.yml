@@ -1,0 +1,25 @@
+name: CI/CD Eafit-App
+
+on:
+  push:
+    branches: ["dev", "stg", "main"]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Manual workflow dispatch'
+        required: true
+        default: 'Reason to run the workflow'
+
+env:
+  APP_NAME: eafit-app
+  NAMESPACE: default
+  IMAGE_TAG: ${{ github.sha }}  
+  GCP_REGISTRY: -------
+  GCP_REPOSITORY: ------
+  GCP_PROJECT_ID: ------
+  GKE_CLUSTER: eafit-cluster
+  GKE_ZONE: us-central1
+
+  ASPNETCORE_ENVIRONMENT: ${{ vars.ASPNETCORE_ENVIRONMENT }}
+  AUTHOR: ${{ vars.AUTHOR }}
+  SQL_CONNECTION: ${{ secrets.SQL_CONNECTION }}
